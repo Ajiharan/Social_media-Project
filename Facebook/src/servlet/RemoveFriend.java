@@ -10,32 +10,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Database.UserFriendlist;
-import Database.UserMessage;
-import model.User;
 
 /**
- * Servlet implementation class AddFriend
+ * Servlet implementation class RemoveFriend
  */
-@WebServlet("/AddFriend")
-public class AddFriend extends HttpServlet {
+@WebServlet("/RemoveFriend")
+public class RemoveFriend extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+       
   
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String myid=request.getParameter("user_Id");
-		String friend_id=request.getParameter("Friend_Id");
+		String myid=request.getParameter("remove_fid");
+		String friend_id=request.getParameter("remove_uid");
 		UserFriendlist userFriendlist=new UserFriendlist();
-		boolean isRequested=userFriendlist.Addfriend(myid, friend_id);
+		System.out.println("dsdsd");
+		System.out.println(friend_id);
+		boolean isDeleted=userFriendlist.RemoveUser(friend_id,myid);
 		
-		if(isRequested) {
-			
+		if(isDeleted) {
 			RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/friendlist.jsp");
+			
 			dispatcher.forward(request, response);
 		}
 		else {
+			RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/Home.jsp");
 			
-			RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/friendlist.jsp");
 			dispatcher.forward(request, response);
 		}
 		

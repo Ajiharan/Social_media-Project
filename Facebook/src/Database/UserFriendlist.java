@@ -110,4 +110,28 @@ public class UserFriendlist {
 		}
 		return list;
 	}
+	
+	public boolean RemoveUser(String uid,String fid) {
+			int rowsdeleted=0;
+			try {
+				ps=con.prepareStatement(SocialSql.REMOVE_CURRENT_FRIEND);
+				ps.setString(1,fid);
+				ps.setString(2, uid);
+				 rowsdeleted=ps.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			finally {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			return (rowsdeleted > 0);
+
+	}
 }

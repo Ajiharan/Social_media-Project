@@ -19,4 +19,6 @@ public final class SocialSql {
 	public static final String GET_FRIENDS_DETAILS="select * from user WHERE id = ANY(select fid from friend_list where uid=?)";
 	
 	public static final String GET_AVAILABLE_FRIENDS="select * from user WHERE id !=All(select fid from friend_list where uid=?)";
+	
+	public static final String REMOVE_CURRENT_FRIEND="delete from friend_list where fid=? and uid=?";
 }

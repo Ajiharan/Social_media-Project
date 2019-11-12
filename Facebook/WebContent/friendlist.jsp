@@ -52,9 +52,9 @@ UserFriendlist userFriendlist=new UserFriendlist();
 			            <h4 class="card-title"><%=u2.getName()%></h4>
 			            <p class="card-text"><%=u2.getUsername() %></p>
 			           
-			           	<form action="#" method="post">
-				           	<input type="hidden" name="Friend_Id" value="<%= u2.getId()%>"/>
-				           	<input type="hidden" name="user_Id" value="<%= session.getAttribute("myids")%>"/>
+			           	<form action="RemoveFriend" method="post">
+				           	<input type="hidden" name="remove_fid" value="<%= u2.getId()%>"/>
+				           	<input type="hidden" name="remove_uid" value="<%= session.getAttribute("myids")%>"/>
 				           	<input type="submit" style=" cursor: pointer; color:white" class="btn btn-warning" value="Undo request">
 				        </form>
 				       
